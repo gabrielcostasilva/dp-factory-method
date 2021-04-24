@@ -12,6 +12,8 @@ public class RegionDataRetriever
 
     @Override
     public List<Integer> getData(Long id, List<Long> selection) {
-        return List.of(service.hashCode());
+        System.out.println("Service: " + this.service);
+
+        return List.of(1, 2, 3);
     }
 }

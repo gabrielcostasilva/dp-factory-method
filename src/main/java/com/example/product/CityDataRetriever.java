@@ -12,6 +12,8 @@ public class CityDataRetriever
 
     @Override
     public List<String> getData(Long id, List<Long> selection) {
-        return List.of(service.randomUUID().toString());
+        System.out.println("Service: " + this.service);
+
+        return List.of("City1", "City2", "City3");
     }
 }

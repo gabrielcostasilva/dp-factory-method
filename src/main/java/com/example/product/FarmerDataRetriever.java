@@ -12,6 +12,8 @@ public class FarmerDataRetriever
 
     @Override
     public List<Long> getData(Long id, List<Long> selection) {
-        return List.of(service.getMostSignificantBits());
+        System.out.println("Service: " + this.service);
+
+        return List.of(1L, 2L, 3L);
     }    
 }

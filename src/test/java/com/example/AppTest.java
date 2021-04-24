@@ -21,15 +21,17 @@ public class AppTest {
         final UUID service2 = UUID.randomUUID();
         final UUID service3 = UUID.randomUUID();
 
-        assertNotNull(Factory.CITY.getInstance(service1).getData(1L, List.of(1L, 2L)));
-        assertNotNull(Factory.CITY.getInstance(service2).getData(1L, List.of(1L, 2L)));
-        assertNotNull(Factory.CITY.getInstance(service3).getData(1L, List.of(1L, 2L)));
-        assertNotNull(Factory.FARMER.getInstance(service1).getData(1L, List.of(1L, 2L)));
-        assertNotNull(Factory.FARMER.getInstance(service2).getData(1L, List.of(1L, 2L)));
-        assertNotNull(Factory.FARMER.getInstance(service3).getData(1L, List.of(1L, 2L)));
-        assertNotNull(Factory.REGION.getInstance(service3).getData(1L, List.of(1L, 2L)));
-        assertNotNull(Factory.REGION.getInstance(service3).getData(1L, List.of(1L, 2L)));
-        assertNotNull(Factory.REGION.getInstance(service3).getData(1L, List.of(1L, 2L)));
+        assertEquals(List.of("City1", "City2", "City3"), Factory.CITY.getInstance(service1).getData(1L, List.of(1L, 2L)));
+        assertEquals(List.of("City1", "City2", "City3"), Factory.CITY.getInstance(service2).getData(1L, List.of(1L, 2L)));
+        assertEquals(List.of("City1", "City2", "City3"), Factory.CITY.getInstance(service3).getData(1L, List.of(1L, 2L)));
+
+        assertEquals(List.of(1L, 2L, 3L), Factory.FARMER.getInstance(service1).getData(1L, List.of(1L, 2L)));
+        assertEquals(List.of(1L, 2L, 3L), Factory.FARMER.getInstance(service2).getData(1L, List.of(1L, 2L)));
+        assertEquals(List.of(1L, 2L, 3L), Factory.FARMER.getInstance(service3).getData(1L, List.of(1L, 2L)));
+
+        assertEquals(List.of(1, 2, 3), Factory.REGION.getInstance(service1).getData(1L, List.of(1L, 2L)));
+        assertEquals(List.of(1, 2, 3), Factory.REGION.getInstance(service2).getData(1L, List.of(1L, 2L)));
+        assertEquals(List.of(1, 2, 3), Factory.REGION.getInstance(service3).getData(1L, List.of(1L, 2L)));
     }
 
 }
