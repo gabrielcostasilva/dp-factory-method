@@ -15,6 +15,8 @@ Check the test class to see the code in action.
 
 ## Class Structure
 
+<img src="./pics/Diagram.png" />
+
 There are two packages: `factory` and `product`. The `factory` package was initially created to group subclasses that act as factories.
 
 The `product` package groups the abstract and concrete _product_ classes.
