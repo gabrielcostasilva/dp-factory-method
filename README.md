@@ -3,6 +3,8 @@ This branch changes the [Factory method example](https://github.com/gabrielcosta
 
 A _sealed class_ enables creating closed inheritance. In summary, it means that the superclass has a limited set of known subclasses. Venkat Subramaniam gives a [good introduction on sealed classes](https://www.youtube.com/watch?v=Xkh5sa3vjTE) if you are interested in knowing more about it.
 
+This project exemplifies the use of `sealed` and `final` combination whereas a [chain of responsibility branch](https://github.com/gabrielcostasilva/dp-chain-responsibility/tree/sealed-class-example) shows the use of the `non-sealed` keyword.
+
 ## Project Overview
 
 The only changes made in this code are those that introduced by the `sealed` and `permits` keywords. Whereas the former marks the class or interface as a _sealed class_, the latter declares the known subclasses. The code snippet below exemplifies their use.
