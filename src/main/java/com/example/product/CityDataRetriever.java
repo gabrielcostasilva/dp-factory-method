@@ -3,7 +3,7 @@ package com.example.product;
 import java.util.List;
 import java.util.UUID;
 
-public class CityDataRetriever 
+public final class CityDataRetriever 
         extends AbstractDataRetriever<String> {
 
     public CityDataRetriever(UUID service) {

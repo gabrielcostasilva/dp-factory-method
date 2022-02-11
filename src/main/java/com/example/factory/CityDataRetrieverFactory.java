@@ -5,7 +5,7 @@ import java.util.UUID;
 import com.example.product.AbstractDataRetriever;
 import com.example.product.CityDataRetriever;
 
-public class CityDataRetrieverFactory 
+public final class CityDataRetrieverFactory 
         extends DataRetrieverFactory {
 
     @Override

@@ -2,7 +2,8 @@ package com.example.factory;
 
 import com.example.product.AbstractDataRetriever;
 
-public abstract class DataRetrieverFactory {
+public sealed abstract class DataRetrieverFactory 
+    permits CityDataRetrieverFactory, FarmerDataRetrieverFactory, RegionDataRetrieverFactory {
 
     public enum DataRetriever {
         CITY, FARMER, REGION;

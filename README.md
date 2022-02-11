@@ -1,35 +1,35 @@
-# Factory Method Design Pattern Example
-Although this project is not based on any particular tutorial, I mainly used the [Refactoring Guru](https://refactoring.guru/design-patterns/factory-method) explanation as reference when implementing the code.
+# Sealed Class Example
+This branch changes the [Factory method example](https://github.com/gabrielcostasilva/dp-factory-method.git) to show _sealed class_, a [new feature introduced in Java 17](https://openjdk.java.net/jeps/409).
+
+A _sealed class_ enables creating closed inheritance. In summary, it means that the superclass has a limited set of known subclasses. Venkat Subramaniam gives a [good introduction on sealed classes](https://www.youtube.com/watch?v=Xkh5sa3vjTE) if you are interested in knowing more about it.
 
 ## Project Overview
 
-There are classes (_products_) representing a set of data operations for different entities. These classes are parameterised to use a type of service (service1, service2, service3, ...) and work with a type of entity (String, Long, Integer, ...). _Product_ classes extend `AbstractDataRetriever`, which sets the common behaviour expected by _data retriever_ classes (`getData(List<E>)`).
+The only changes made in this code are those that introduced by the `sealed` and `permits` keywords. Whereas the former marks the class or interface as a _sealed class_, the latter declares the known subclasses. The code snippet below exemplifies their use.
 
-_Creator_ classes extend `DataRetrieverFactory`, which sets the `getDataRetriever(): AbstractDataRetriever<E>` method. The method is responsible for creating _concrete products_. Each subclass of `DataRetrieverFactory` depends on a subclass of `AbstractDataRetriever<E>`.
+```java
+// (...)
 
-`DataRetrieverFactory.from(DataRetriever): AbstractDataRetriever` is an auxiliary method that instantiate classes based on an argument. Althoug this is not part of the original structure, it is an usual extension used by many developers.
+public sealed abstract class AbstractDataRetriever<E> 
+    permits CityDataRetriever, FarmerDataRetriever, RegionDataRetriever {
 
-Check out the test class to see the code in action.
+   // (...)
+}
+```
 
-## Class Structure
+In addition, the `final` keyword _closes_ the inheritance, as it unables the subclass extension.
 
-<img src="./pics/ClassDiagram.png" />
+```java
+// (...)
 
-There are two packages: `factory` and `product`. The `factory` package groups subclasses that act as factories (left-hand side). The `product` package groups abstract and concrete _product_ classes (righ-hand side).
+public final class CityDataRetriever 
+        extends AbstractDataRetriever<String> {
 
-* `AbstractDataRetriever` is the abstraction used to define a product. It has a constructor that receives a service and a method that retrieves the data;
+   //  (...)
+}
+```
 
-* `CityDataRetriever`, `FarmerDataRetriever` & `RegionDataRetriever` are concrete implementations of a _product_. 
-
-* `DataRetrieverFactory` sets the method that creates an instance of a _product_. In addition, it carries a _factory method_ that is a usual extension to the Factory DP.
-
-* `FarmerDataRetrieverFactory`, `CityDataRetrieverFactory`, and `RegionDataRetrieverFactory` instantiate _concrete products_.
-
-## Flow Structure
-
-<img src="./pics/SequenceDiagram.png" />
-
-The Figure shows the test execution for three services. Notice the sequence diagram shows only the abstraction, not the concrete implementations. Three factories are created from `from()` method. Similarly, three `getData()` calls are made to instances of `AbstractDataRetriever`.
+A class extending a _sealed class_ must be `final`, `sealed` or `non-sealed`.
 
 ## Project Setup
 ```

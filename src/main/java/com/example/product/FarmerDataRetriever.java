@@ -3,7 +3,7 @@ package com.example.product;
 import java.util.List;
 import java.util.UUID;
 
-public class FarmerDataRetriever 
+public final class FarmerDataRetriever 
         extends AbstractDataRetriever<Long> {
 
     public FarmerDataRetriever(UUID service) {

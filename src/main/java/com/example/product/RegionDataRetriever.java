@@ -3,7 +3,7 @@ package com.example.product;
 import java.util.List;
 import java.util.UUID;
 
-public class RegionDataRetriever 
+public final class RegionDataRetriever 
         extends AbstractDataRetriever<Integer> {
 
     public RegionDataRetriever(UUID service) {

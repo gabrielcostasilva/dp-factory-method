@@ -3,7 +3,8 @@ package com.example.product;
 import java.util.List;
 import java.util.UUID;
 
-public abstract class AbstractDataRetriever<E> {
+public sealed abstract class AbstractDataRetriever<E> 
+    permits CityDataRetriever, FarmerDataRetriever, RegionDataRetriever {
 
     protected final UUID service;
 
